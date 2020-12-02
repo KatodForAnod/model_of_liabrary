@@ -12,6 +12,8 @@ public class UserService {
 
         if (propertiesUser.size() == 0) {
             user.setAuthorized(false);
+        } else {
+            user.setAuthorized(true);
         }
 
         user.setName(propertiesUser.get(0));
