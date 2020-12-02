@@ -6,11 +6,16 @@ import java.util.List;
 public class UserService {
     public User authorizate(String name, Integer password, Database database) {
         List<String> propertiesUser = new LinkedList<>();
+        propertiesUser = database.authorizate(name, password);
+
         User user = new User();
 
-        if(propertiesUser.size() == 0){
+        if (propertiesUser.size() == 0) {
             user.setAuthorized(false);
         }
+
+        user.setName(propertiesUser.get(0));
+        user.setInfAboutUser(propertiesUser.get(1));
 
         return user;
     }
