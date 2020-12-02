@@ -3,7 +3,7 @@ package base_pakage;
 import java.util.*;
 
 public class Database {
-    List<Book> listOfBooks = new ArrayList<Book>();
+    List<Book> listOfBooks = new ArrayList<>();
 
     public Database() {
         listOfBooks.add(new Book("Qbook.0",
@@ -11,21 +11,21 @@ public class Database {
                 0,
                 8.0,
                 "The book about world",
-                Arrays.asList(new String[]{"Hey", "Ya"})
+                Arrays.asList("Hey", "Ya")
         ));
         listOfBooks.add(new Book("Vbook.1",
                 "D.M. Qwert",
                 1,
                 6.4,
                 "The book about young man",
-                Arrays.asList(new String[]{"Salam", "Ya", "Aleikum"})
+                Arrays.asList("Salam", "Ya", "Aleikum")
         ));
         listOfBooks.add(new Book("Rbook.2",
                 "Q.A. Berts",
                 2,
                 4.5,
                 "The book about engines",
-                Arrays.asList(new String[]{"Normal", "Boring"})
+                Arrays.asList("Normal", "Boring")
         ));
     }
 
@@ -48,9 +48,15 @@ public class Database {
     }
 
     public Boolean rateBook(int idBook, Integer rate) {
-        if (idBook + 1 < listOfBooks.size() && idBook >= 0) {
-            double previousRate = listOfBooks.get(idBook).getRating();
-            listOfBooks.get(idBook).setRating((previousRate + rate) / 2);
+        if (idBook < listOfBooks.size() && idBook >= 0) {
+
+            for (Book listOfBook : listOfBooks) {
+                if (listOfBook.getId() == idBook) {
+                    double prevRate = listOfBook.getRating();
+                    listOfBook.setRating((prevRate + rate) / 2);
+                }
+            }
+
             return true;
         } else {
             return false;
@@ -58,11 +64,20 @@ public class Database {
     }
 
     public Boolean leaveComment(int idBook, String comment) {
-        if (idBook + 1 < listOfBooks.size() && idBook >= 0) {
-            List<String> listTmp = listOfBooks.get(idBook).getComments();
-            listTmp.add(comment);
 
-            listOfBooks.get(idBook).setComments(listTmp);
+        if (idBook < listOfBooks.size() && idBook >= 0) {
+            List<String> listTmp = new ArrayList<>();
+
+            for (Book listOfBook : listOfBooks) {
+                if (listOfBook.getId() == idBook) {
+
+                    listTmp.addAll(listOfBook.getComments());
+                    listTmp.add(comment);
+
+                    listOfBook.setComments(listTmp);
+                }
+            }
+
             return true;
         } else {
             return false;
@@ -116,7 +131,7 @@ public class Database {
     }
 
     public List<String> authorizate(String name, Integer password) {
-        List<String> tmp = Arrays.asList(new String[]{name, "75 kg"});
+        List<String> tmp = Arrays.asList(name, "75 kg");
         return tmp;
     }
 }
