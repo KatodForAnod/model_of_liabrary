@@ -62,20 +62,27 @@ public class MainPage {
                 System.out.println("rate : ");
                 int rate = scanner.nextInt();
 
-                bookPage.rateBook(bookServices, rate);
+                if (bookPage.rateBook(bookServices, rate)) {
+                    System.out.println("success");
+                } else {
+                    System.out.println("fail");
+                }
+
                 return;
             }
             case 3: {
                 System.out.println("comment : ");
                 String comment = scanner.next();
 
-                bookPage.leaveComment(bookServices, comment);
+                if (bookPage.leaveComment(bookServices, comment)) {
+                    System.out.println("success");
+                } else {
+                    System.out.println("fail");
+                }
+
                 return;
             }
             case 4: {
-                return;
-            }
-            default: {
                 return;
             }
         }
@@ -89,10 +96,14 @@ public class MainPage {
 
         User auth_user = userService.authorizate(userName, password, database);
 
-        if (auth_user.getAuthorized() == false) {
+        if (!auth_user.getAuthorized()) {
+            System.out.println("false");
+
             return false;
         } else {
             user = auth_user;
+            System.out.println("success");
+
             return true;
         }
     }
