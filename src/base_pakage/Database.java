@@ -3,9 +3,18 @@ package base_pakage;
 import java.util.*;
 
 public class Database {
-    List<Book> listOfBooks = new ArrayList<>();
+    private List<Book> listOfBooks = new ArrayList<>();
+    private static Database object;
 
-    public Database() {
+    public static Database getObject() {
+        if (Database.object == null) {
+            object = new Database();
+        }
+
+        return object;
+    }
+
+    private Database() {
         listOfBooks.add(new Book("Qbook.0",
                 "A.S. Johnsom",
                 0,

@@ -7,7 +7,7 @@ public class BookPage {
 
     public String downloadBook(BookServices bookServices){
         //объект в spring должен был создоваться
-        Database database = new Database();
+        Database database = Database.getObject();
         return bookServices.download(database, idBook);
     }
 
@@ -17,7 +17,7 @@ public class BookPage {
         }
 
         //объект в spring должен был создоваться
-        Database database = new Database();
+        Database database = Database.getObject();
         return bookServices.leaveComment(database, idBook, comment);
     }
 
@@ -27,7 +27,7 @@ public class BookPage {
         }
 
         //объект в spring должен был создоваться
-        Database database = new Database();
+        Database database = Database.getObject();
         return bookServices.rateBook(database, idBook, rate);
     }
 

@@ -15,7 +15,7 @@ public class MainPage {
 
     public List<Book> getBooks(BookServices bookServices) {
         //объект в spring должен был создоваться
-        Database database = new Database();
+        Database database = Database.getObject();
 
         List<String> filterList = new ArrayList<>();
         if (filter.getAlphabetSort()) {
@@ -90,7 +90,7 @@ public class MainPage {
 
     public Boolean authorize(UserService userService) {
         //объект в spring должен был создоваться
-        Database database = new Database();
+        Database database = Database.getObject();
         String userName = new String();
         Integer password = new Integer(0);
 
@@ -110,7 +110,7 @@ public class MainPage {
 
     public Boolean registrate(UserService userService) {
         //объект в spring должен был создоваться
-        Database database = new Database();
+        Database database = Database.getObject();
         String userName = new String();
         Integer password = new Integer(0);
 
