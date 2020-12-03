@@ -1,4 +1,7 @@
-package base_pakage;
+package services;
+
+import database_package.Database;
+import models.User;
 
 import java.util.LinkedList;
 import java.util.List;

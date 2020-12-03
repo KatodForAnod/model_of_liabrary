@@ -1,13 +1,16 @@
-package base_pakage;
+package services;
+
+import database_package.Database;
+import models.Book;
 
 import java.util.List;
 
 public class BookServices {
-    public String download(Database database, int idBook){
+    public String download(Database database, int idBook) {
         return database.downloadBook(idBook);
     }
 
-    public Boolean rateBook(Database database, int idBook, Integer rate){
+    public Boolean rateBook(Database database, int idBook, Integer rate) {
         return database.rateBook(idBook, rate);
     }
 

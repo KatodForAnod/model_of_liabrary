@@ -1,4 +1,4 @@
-package base_pakage;
+package models;
 
 public class Filter {
     private Boolean alphabetSort;

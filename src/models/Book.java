@@ -1,4 +1,4 @@
-package base_pakage;
+package models;
 
 import java.util.List;
 

@@ -1,11 +1,14 @@
-package base_pakage;
+package class_page;
 
+
+import services.BookServices;
+import database_package.Database;
 
 public class BookPage {
     private Boolean userIsAuthorized;
     private int idBook;
 
-    public String downloadBook(BookServices bookServices){
+    public String downloadBook(BookServices bookServices) {
         //объект в spring должен был создоваться
         Database database = Database.getObject();
         return bookServices.download(database, idBook);
