@@ -15,24 +15,44 @@ public class Filter {
         return alphabetSort;
     }
 
-    public void setAlphabetSort(Boolean alphabetSort) {
-        this.alphabetSort = alphabetSort;
+    public void setAlphabetSortActive() {
+        alphabetSort = true;
+        countCommentSort = false;
+        rateSort = true;
     }
 
     public Boolean getCountCommentSort() {
         return countCommentSort;
     }
 
-    public void setCountCommentSort(Boolean countCommentSort) {
-        this.countCommentSort = countCommentSort;
+    public void setCountCommentSortActive() {
+        countCommentSort = true;
+        rateSort = false;
+        alphabetSort = false;
+    }
+
+    public String getActiveSort() {
+        if (getAlphabetSort()) {
+            return "alphabetSort";
+        }
+        if (getCountCommentSort()) {
+            return "countCommentSort";
+        }
+        if (getRateSort()) {
+            return "rateSort";
+        }
+
+        return "alphabetSort";
     }
 
     public Boolean getRateSort() {
         return rateSort;
     }
 
-    public void setRateSort(Boolean rateSort) {
-        this.rateSort = rateSort;
+    public void setRateSortActive() {
+        rateSort = true;
+        countCommentSort = false;
+        alphabetSort = false;
     }
 
 
