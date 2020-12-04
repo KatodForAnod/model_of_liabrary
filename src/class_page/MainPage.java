@@ -8,6 +8,7 @@ import models.Filter;
 import models.User;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -24,10 +25,7 @@ public class MainPage {
         //объект в spring должен был создоваться
         Database database = Database.getObject();
 
-        List<String> filterList = new ArrayList<>();
-        if (filter.getAlphabetSort()) {
-            filterList.add("alphabetSort");
-        }
+        List<String> filterList = Arrays.asList(filter.getActiveSort());
 
         return bookServices.getBooks(database, filterList);
     }
@@ -124,4 +122,32 @@ public class MainPage {
         return userService.registrate(userName, password, database);
     }
 
+    public void setFilter() {
+        Database database = Database.getObject();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("1. alphabetSort");
+        System.out.println("2. rateSort");
+        System.out.println("3. countCommentSort");
+
+        int choice = scanner.nextInt();
+        String sort = " ";
+
+        switch (choice) {
+            case 1: {
+                filter.setAlphabetSortActive();
+                break;
+
+            }
+            case 2: {
+                filter.setRateSortActive();
+                break;
+            }
+            case 3: {
+                filter.getCountCommentSort();
+                break;
+            }
+        }
+
+    }
 }
