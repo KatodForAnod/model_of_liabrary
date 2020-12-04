@@ -102,30 +102,15 @@ public class Database {
 
         switch (filter.get(0)) {
             case "alphabetSort": {
-                Collections.sort(listOfBooks, new Comparator<Book>() {
-                    @Override
-                    public int compare(Book o1, Book o2) {
-                        return String.CASE_INSENSITIVE_ORDER.compare(o1.getName(), o2.getName());
-                    }
-                });
+                listOfBooks.sort((o1, o2) -> String.CASE_INSENSITIVE_ORDER.compare(o1.getName(), o2.getName()));
                 break;
             }
             case "countCommentSort": {
-                Collections.sort(listOfBooks, new Comparator<Book>() {
-                    @Override
-                    public int compare(Book o1, Book o2) {
-                        return o1.getComments().size() - o2.getComments().size();
-                    }
-                });
+                listOfBooks.sort(Comparator.comparingInt(o -> o.getComments().size()));
                 break;
             }
             case "rateSort": {
-                Collections.sort(listOfBooks, new Comparator<Book>() {
-                    @Override
-                    public int compare(Book o1, Book o2) {
-                        return (int) (o1.getRating() - o2.getRating());
-                    }
-                });
+                listOfBooks.sort((o1, o2) -> (int) (o1.getRating() - o2.getRating()));
                 break;
             }
             default: {
